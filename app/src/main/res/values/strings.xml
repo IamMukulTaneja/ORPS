@@ -3,4 +3,9 @@
     <string name="welcome_note">ORPS</string>
     <string name="welcome">Welcome to online railway parking system</string>
     <string name="splashtext">Designed By UTS Team</string>
+    <string name="ORPS">Online Railway Parking System</string>
+    <string name="twowheeler">Two Wheeler</string>
+    <string name="fourwheeler">Four Wheeler</string>
+    <string name="enterstation">Enter Station</string>
+    <string name="findparking">Find Parking</string>
 </resources>
