@@ -72,6 +72,7 @@
             android:layout_alignBottom="@+id/stationspinner"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
             android:layout_alignTop="@+id/stationspinner" />
         <Spinner
             android:id="@+id/stationspinner"

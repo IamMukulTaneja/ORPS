@@ -8,4 +8,8 @@
     <string name="fourwheeler">Four Wheeler</string>
     <string name="enterstation">Enter Station : </string>
     <string name="findparking">Find Parking</string>
+    <string name="enteryourdetails">Enter Your Details</string>
+    <string name="name">Name</string>
+    <string name="contact">Contact Number</string>
+    <string name="signup">Sign Up</string>
 </resources>
