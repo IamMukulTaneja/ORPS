@@ -12,4 +12,5 @@
     <string name="name">Name</string>
     <string name="contact">Contact Number</string>
     <string name="signup">Sign Up</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
