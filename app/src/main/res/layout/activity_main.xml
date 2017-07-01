@@ -7,11 +7,55 @@
     tools:context="com.example.dell.orps.MainActivity">
 
 
+
     <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="wrap_content"
+        android:layout_height="183dp"
+        android:layout_weight="0.4"
+        app:srcCompat="@drawable/spalshimage" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ORPS"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:layout_weight="0.1"
+        android:textAlignment="center"
+        android:layout_marginTop="32dp"/>
+
+    <RadioButton
+        android:id="@+id/twowheeler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:textColor="#000000"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="16dp"
+        android:textSize="28sp"
+        android:layout_gravity="center"
+        android:text="@string/twowheeler" />
+
+    <RadioButton
+        android:id="@+id/fourwheeler"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
