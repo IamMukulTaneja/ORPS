@@ -8,7 +8,9 @@
     tools:context="com.example.dell.orps.MainActivity"
     android:weightSum="1">
 
-
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/main_image"
         android:layout_width="wrap_content"
@@ -16,6 +18,12 @@
         android:layout_weight="0.4"
         app:srcCompat="@drawable/spalshimage" />
 
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</FrameLayout>
     <TextView
         android:id="@+id/heading"
         android:layout_width="match_parent"

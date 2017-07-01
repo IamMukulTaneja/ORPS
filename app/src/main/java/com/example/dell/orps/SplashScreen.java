@@ -1,16 +1,11 @@
 package com.example.dell.orps;
 
-import android.app.ActionBar;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
@@ -19,7 +14,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         View decorView = getWindow().getDecorView();
 // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        int uiOptions = android.view.View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 // Remember that you should never show the action bar if the
 // status bar is hidden, so hide that too if necessary.
@@ -29,9 +24,15 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
-
+                SharedPreferences sharedPreferences=getSharedPreferences("Mypref",0);
+                if(sharedPreferences.getString("NAME",null)==null || sharedPreferences.getString("CONTACT",null)==null) {
+                    Intent i = new Intent(SplashScreen.this, SignInActivity.class);
+                    startActivity(i);
+                }
+                else{
+                    Intent i1=new Intent(SplashScreen.this,MainActivity.class);
+                    startActivity(i1);
+                }
                 // close this activity
                 finish();
             }
