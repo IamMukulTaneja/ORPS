@@ -29,7 +29,7 @@ public class ParkingDetails extends AppCompatActivity {
             selectedstation = get.getStringExtra(Intent.EXTRA_TEXT);
         }
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.43.143/OPRS-server-master/getStationParkingStatus.php";
+        String url = "https://github.com/Nit-S/ORPS/tree/nitigya";
         JsonObjectRequest json = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
