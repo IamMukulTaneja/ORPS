@@ -14,4 +14,8 @@
     <string name="signup" translatable="false">Sign Up</string>
     <string name="welcome1" translatable="false">Welcome , </string>
     <string name="ghy">GHY</string>
+    <string name="stationdetail">STATION DETAILS</string>
+    <string name="twowheelerparkingdetails">TWO WHEELER</string>
+    <string name="fourwheelerparkingdetails">FOUR WHEELER</string>
+    <string name="Book">BOOK</string>
 </resources>
