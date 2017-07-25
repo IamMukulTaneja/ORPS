@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class SignInActivity extends AppCompatActivity {
-EditText name,contact;
+EditText name,contact,email;
     Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ EditText name,contact;
         setContentView(R.layout.activity_sign_in);
         name=(EditText)findViewById(R.id.name);
         contact=(EditText)findViewById(R.id.phone);
+        email=(EditText)findViewById(R.id.email);
         signup=(Button)findViewById(R.id.signup);
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -27,9 +28,11 @@ EditText name,contact;
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putString("NAME",name.getText().toString().trim());
                 editor.putString("CONTACT",contact.getText().toString().trim());
+                editor.putString("EMAIL",email.getText().toString().trim());
                 editor.apply();
                 Intent i=new Intent(SignInActivity.this,MainActivity.class);
                 startActivity(i);
+
             }
         });
     }

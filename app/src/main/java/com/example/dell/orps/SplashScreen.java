@@ -26,12 +26,14 @@ public class SplashScreen extends AppCompatActivity {
                 // Start your app main activity
                 SharedPreferences sharedPreferences=getSharedPreferences("Mypref",0);
                 if(sharedPreferences.getString("NAME",null)==null || sharedPreferences.getString("CONTACT",null)==null) {
-                    Intent i = new Intent(SplashScreen.this, SignInActivity.class);
-                    startActivity(i);
+                    Intent i4 = new Intent(SplashScreen.this, SignInActivity.class);
+                    startActivity(i4);
+
                 }
                 else{
-                    Intent i1=new Intent(SplashScreen.this,MainActivity.class);
-                    startActivity(i1);
+                    Intent i5=new Intent(SplashScreen.this,MainActivity.class);
+                    startActivity(i5);
+
                 }
                 // close this activity
                 finish();

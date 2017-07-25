@@ -110,7 +110,8 @@ public class ParkingDetails extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            Intent i1=new Intent(ParkingDetails.this,BookingActivity.class);
+                startActivity(i1);
             }
         });
 

@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.orps.BookingActivity">
+    android:orientation="vertical"
+    tools:context="com.example.dell.orps.BookingActivity"
+    android:weightSum="1">
+<RadioGroup
+    android:id="@+id/radio"
+    android:layout_width="357dp"
+    android:layout_weight="0.72"
+    android:layout_height="wrap_content">
+    <RadioButton
+        android:id="@+id/halfhour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book For 30 Minutes"
+        android:layout_gravity="center"
+        android:layout_margin="32dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <RadioButton
+        android:id="@+id/onehour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="Book for 1 hour" />
+
+    <RadioButton
+        android:id="@+id/twohour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+       android:text="Book for 2 hours" />
+
+    <RadioButton
+        android:id="@+id/threehour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="Book for 3 hours" />
+
+</RadioGroup>
+
+    <Button
+        android:id="@+id/confirmbooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="32dp"
+        android:layout_weight="0.15"
+        android:text="Confirm Booking" />
+</LinearLayout>

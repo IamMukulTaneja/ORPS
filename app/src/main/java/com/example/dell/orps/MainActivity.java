@@ -65,6 +65,7 @@ TextView welcome;
                 Intent post=new Intent(MainActivity.this,ParkingDetails.class);
                 post.putExtra(Intent.EXTRA_TEXT,selectedstation);
                 startActivity(post);
+
             }
         });
     }
