@@ -16,7 +16,7 @@
         android:id="@+id/halfhour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Book For 30 Minutes"
+        android:text="@string/thirtyminutes"
         android:layout_gravity="center"
         android:layout_margin="32dp" />
 
@@ -25,21 +25,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:text="Book for 1 hour" />
+        android:text="@string/onehour" />
 
     <RadioButton
         android:id="@+id/twohour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-       android:text="Book for 2 hours" />
+       android:text="@string/twohours" />
 
     <RadioButton
         android:id="@+id/threehour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
-        android:text="Book for 3 hours" />
+        android:text="@string/threehours" />
 
 </RadioGroup>
 

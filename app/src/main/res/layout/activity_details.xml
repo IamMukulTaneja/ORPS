@@ -10,7 +10,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:text="FILL IN YOUR DETAILS"
+    android:text="@string/fillinyourdetails"
     android:layout_margin="16dp"
     android:textSize="20sp"
     android:textColor="#000000"/>
@@ -22,7 +22,7 @@
         android:ems="10"
         android:layout_margin="8dp"
         android:inputType="textPersonName"
-        android:hint="Name(Required)" />
+        android:hint="@string/namerequired" />
 
     <EditText
         android:id="@+id/contact"
@@ -31,7 +31,7 @@
         android:ems="10"
         android:layout_margin="8dp"
         android:inputType="phone"
-        android:hint="Contact Number(Required)"/>
+        android:hint="@string/contactnumberrequired"/>
 
     <EditText
         android:id="@+id/email"
@@ -40,7 +40,7 @@
         android:ems="10"
         android:layout_margin="8dp"
         android:inputType="textEmailAddress"
-        android:hint="Email Id"/>
+        android:hint="@string/email"/>
 
     <EditText
         android:id="@+id/vehiclenumber"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_margin="8dp"
-        android:hint="Vehicle Number(Required)"
+        android:hint="@string/vehiclenumber"
         android:inputType="textPersonName"
          />
     <RelativeLayout
@@ -66,7 +66,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/stationspinner"
             android:layout_marginLeft="16dp"
-            android:text="Vehicle Type(Required)"
+            android:text="@string/vehicletype"
             android:textAlignment="center"
             android:textSize="19sp"
             />
@@ -90,7 +90,7 @@
         android:ems="10"
         android:layout_margin="8dp"
         android:inputType="textPersonName"
-        android:hint="Vehicle Color" />
+        android:hint="@string/vehiclecolor" />
 
     <EditText
         android:id="@+id/vehiclename"
@@ -99,10 +99,10 @@
         android:ems="10"
         android:layout_margin="5dp"
         android:inputType="textPersonName"
-        android:hint="Vehicle Name" />
+        android:hint="@string/vehiclename" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Confirm and Pay"/>
+        android:text="@string/confirmandpay"/>
 </LinearLayout>
