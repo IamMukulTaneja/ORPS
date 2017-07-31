@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="false"
-    android:background="#D1C4E9"
+    android:background="@color/Background"
     tools:context="com.example.dell.orps.SplashScreen">
 
     <TextView

@@ -24,7 +24,8 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".ParkingDetails" />
         <activity android:name=".BookingActivity" />
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".PaymentActivity"></activity>
     </application>
 
 </manifest>
