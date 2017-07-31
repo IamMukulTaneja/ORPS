@@ -13,7 +13,7 @@
     <string name="contact" >Contact Number</string>
     <string name="email" >Email</string>
     <string name="signup" translatable="false">Sign Up</string>
-    <string name="welcome1" >Welcome , </string>
+    <string name="welcome1" >Welcome </string>
     <string name="ghy">GHY</string>
     <string name="stationdetail">STATION DETAILS</string>
     <string name="twowheelerparkingdetails">TWO WHEELER</string>

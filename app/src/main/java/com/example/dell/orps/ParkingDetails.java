@@ -3,15 +3,20 @@ package com.example.dell.orps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
@@ -25,6 +30,7 @@ import java.util.Map;
 
 
 public class ParkingDetails extends AppCompatActivity {
+    private static final int MY_SOCKET_TIMEOUT_MS =5000 ;
     String TAG="NetworkUtils";
     String res;
     ArrayAdapter<String> stationadapter;
@@ -35,6 +41,7 @@ public class ParkingDetails extends AppCompatActivity {
     ListView station_details,two_wheeler,four_wheeler;
     Button book;
     String station_id,station_name,station_class,tot_2w_park,avail_2w_park,tot_4w_park,avail_4w_park;
+    String url = "http://192.168.1.103/OPRS-server-master/OPRS-server-master/getStationParkingStatus.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,52 +55,72 @@ public class ParkingDetails extends AppCompatActivity {
         if (get.hasExtra(Intent.EXTRA_TEXT)) {
             selectedstation = get.getStringExtra(Intent.EXTRA_TEXT);
         }
-        String url = "http://192.168.1.103/OPRS-server-master/OPRS-server-master/getStationParkingStatus.php";
+        stringrequest();
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent i1=new Intent(ParkingDetails.this,BookingActivity.class);
+                startActivity(i1);
+            }
+        });
+
+    }
+
+    public  void stringrequest(){
         StringRequest json=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
             @Override
             public void onResponse(final String response) {
-                try {
-                    JSONObject jsonobject;
-                    jsonobject = new JSONObject(response);
-                    station_id = jsonobject.get("station_id").toString();
-                    station_name = jsonobject.get("station_name").toString();
-                    station_class = jsonobject.get("station_class").toString();
-                    tot_2w_park = jsonobject.get("tot_2w_park").toString();
-                    avail_2w_park = jsonobject.get("avail_2w_park").toString();
-                    tot_4w_park = jsonobject.get("tot_4w_park").toString();
-                    avail_4w_park = jsonobject.get("avail_4w_park").toString();
-                    stationdetails = new ArrayList<>();
-                    stationdetails.add("Station ID : " + station_id);
-                    stationdetails.add("Station Name : " + station_name);
-                    stationdetails.add("Station Class : " + station_class);
-                    stationadapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, stationdetails);
-                    station_details.setAdapter(stationadapter);
-                    twowheelerlist = new ArrayList<>();
-                    twowheelerlist.add("Total Parking : " + tot_2w_park);
-                    twowheelerlist.add("Available Parking : " + avail_2w_park);
-                    fourwheelerlist = new ArrayList<>();
-                    fourwheelerlist.add("Total Parking : " + tot_4w_park);
-                    fourwheelerlist.add("Available Parking : " + avail_4w_park);
-                    TwoWheeleradapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, twowheelerlist);
-                    two_wheeler.setAdapter(TwoWheeleradapter);
-                    FourWheeleradapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, fourwheelerlist);
-                    four_wheeler.setAdapter(FourWheeleradapter);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if (response != null) {
+                    try {
+                        JSONObject jsonobject;
+                        jsonobject = new JSONObject(response);
+                        station_id = jsonobject.get("station_id").toString();
+                        station_name = jsonobject.get("station_name").toString();
+                        station_class = jsonobject.get("station_class").toString();
+                        tot_2w_park = jsonobject.get("tot_2w_park").toString();
+                        avail_2w_park = jsonobject.get("avail_2w_park").toString();
+                        tot_4w_park = jsonobject.get("tot_4w_park").toString();
+                        avail_4w_park = jsonobject.get("avail_4w_park").toString();
+                        stationdetails = new ArrayList<>();
+                        stationdetails.add("Station ID : " + station_id);
+                        stationdetails.add("Station Name : " + station_name);
+                        stationdetails.add("Station Class : " + station_class);
+                        stationadapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.stationdetailslayout, stationdetails);
+                        station_details.setAdapter(stationadapter);
+                        twowheelerlist = new ArrayList<>();
+                        twowheelerlist.add("Total Parking : " + tot_2w_park);
+                        twowheelerlist.add("Available Parking : " + avail_2w_park);
+                        fourwheelerlist = new ArrayList<>();
+                        fourwheelerlist.add("Total Parking : " + tot_4w_park);
+                        fourwheelerlist.add("Available Parking : " + avail_4w_park);
+                        TwoWheeleradapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.parkingdetailslayout, twowheelerlist);
+                        two_wheeler.setAdapter(TwoWheeleradapter);
+                        FourWheeleradapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.parkingdetailslayout, fourwheelerlist);
+                        four_wheeler.setAdapter(FourWheeleradapter);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-
-
-
+                else
+                {
+                    Toast.makeText(ParkingDetails.this, "No response from server", Toast.LENGTH_SHORT).show();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("abd", "Error: " + error
-                        + ">>" + error.networkResponse.statusCode
-                        + ">>" + error.networkResponse.data
-                        + ">>" + error.getCause()
-                        + ">>" + error.getMessage());
 
+                if (error instanceof TimeoutError) {
+                    Toast.makeText(ParkingDetails.this, "Noconnection"+error, Toast.LENGTH_SHORT).show();
+                } else if (error instanceof AuthFailureError) {
+                    Toast.makeText(ParkingDetails.this, "Failureerror", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ServerError) {
+                    Toast.makeText(ParkingDetails.this, "Server error", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof NetworkError) {
+                    Toast.makeText(ParkingDetails.this, "NetworkError", Toast.LENGTH_SHORT).show();
+                } else if (error instanceof ParseError) {
+                    Toast.makeText(ParkingDetails.this, "ParseError", Toast.LENGTH_SHORT).show();
+                }
             }
         }){
             @Override
@@ -104,22 +131,11 @@ public class ParkingDetails extends AppCompatActivity {
             }
         }
                 ;
+        json.setRetryPolicy(new DefaultRetryPolicy(
+                MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.getInstance(this).addToRequestQueue(json);
-
-
-        book.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            Intent i1=new Intent(ParkingDetails.this,BookingActivity.class);
-                startActivity(i1);
-            }
-        });
-
-
-
-
-
     }
 
-
-    }
+}

@@ -5,15 +5,17 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
+    android:background="#D1C4E9"
     android:layout_height="match_parent"
     tools:context="com.example.dell.orps.ParkingDetails">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="16dp"
+    android:layout_margin="8dp"
     android:text="@string/stationdetail"
     android:textColor="#000000"
+    android:textSize="20sp"
     android:textStyle="bold"/>
     <ListView
         android:id="@+id/stationdetails"
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:text="@string/twowheelerparkingdetails"
             android:textColor="#000000"
+            android:textSize="20sp"
             android:layout_margin="16dp"
             android:layout_weight="0.5"
             android:textStyle="bold"/>
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content"
             android:text="@string/fourwheelerparkingdetails"
             android:layout_weight="0.5"
+            android:textSize="20sp"
             android:layout_margin="16dp"
             android:textColor="#000000"
             android:textStyle="bold"/>
@@ -75,6 +79,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:elevation="4dp"
+        android:textSize="20sp"
+        android:background="#00000000"
+        android:textStyle="bold"
         android:layout_marginTop="16dp"
         android:text="@string/Book" />
 </LinearLayout>

@@ -39,15 +39,6 @@ EditText name,contact,email,vehiclenumber,vehiclecolor,vehiclename;
         String email1=sharedPreferences.getString("EMAIL",null);
         email.setText(email1);
         confirmandpay=(Button)findViewById(R.id.confirmbooking);
-        confirmandpay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(name.getText().toString().trim().equals(""))
-                {
-
-                }
-            }
-        });
         vehicletypelist=new ArrayList<String>();
         vehicletypelist.add("Two Wheeler");
         vehicletypelist.add("Four Wheeler");

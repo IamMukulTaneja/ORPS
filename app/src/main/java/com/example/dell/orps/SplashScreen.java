@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
+    TextView welcomenote;
+    RelativeLayout splashlayout;
     private static int SPLASH_TIME_OUT = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
+        splashlayout=(RelativeLayout)findViewById(R.id.splashlayout);
+        welcomenote=(TextView)findViewById(R.id.welcome_note);
+
     }
 
 }
