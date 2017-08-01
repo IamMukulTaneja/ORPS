@@ -3,6 +3,7 @@ package com.example.dell.orps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,10 @@ Button confirmbooking;
 
 
         });
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
 confirmbooking.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

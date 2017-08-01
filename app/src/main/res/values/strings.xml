@@ -42,4 +42,5 @@
     <string name="railwaywallet">Railway Wallet</string>
     <string name="card">Credit/Debit Card</string>
     <string name="othermodes">Other Modes</string>
+    <string name="previous">Previous</string>
 </resources>

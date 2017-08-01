@@ -2,6 +2,7 @@ package com.example.dell.orps;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -63,6 +64,12 @@ public class ParkingDetails extends AppCompatActivity {
                 startActivity(i1);
             }
         });
+
+ // Get a support ActionBar corresponding to this toolbar
+ ActionBar ab = getSupportActionBar();
+ // Enable the Up button
+ ab.setDisplayHomeAsUpEnabled(true);
+
 
     }
 

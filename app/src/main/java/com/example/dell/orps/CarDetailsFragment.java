@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class CarDetailsFragment extends Fragment {
     SpinnerAdapter adapter;
     Context context;
     Button  confirmandpay;
+    Button previous;
     public CarDetailsFragment(){
     }
 
@@ -34,11 +36,14 @@ public class CarDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootview=inflater.inflate(R.layout.car_details_fragment,container,false);
+        final DetailsFragment detailsFragment=new DetailsFragment();
+        final FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
         Spinner vehicletype=(Spinner)rootview.findViewById(R.id.vehicletypespinner);
         EditText vehiclenumber=(EditText)rootview.findViewById(R.id.vehiclenumber);
         EditText vehiclecolor=(EditText)rootview.findViewById(R.id.vehiclecolor);
         EditText vehiclename=(EditText)rootview.findViewById(R.id.vehiclename);
         confirmandpay=(Button)rootview.findViewById(R.id.confirmandpay);
+        previous=(Button)rootview.findViewById(R.id.previous);
         vehicletypelist=new ArrayList<String>();
         vehicletypelist.add("Two Wheeler");
         vehicletypelist.add("Four Wheeler");
@@ -60,6 +65,12 @@ public class CarDetailsFragment extends Fragment {
             public void onClick(View v) {
                 Intent i10=new Intent(getActivity(),PaymentActivity.class);
                 startActivity(i10);
+            }
+        });
+       previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction().replace(R.id.headcontainer,detailsFragment).commit();
             }
         });
         return rootview;

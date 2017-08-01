@@ -22,10 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".ParkingDetails" />
-        <activity android:name=".BookingActivity" />
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".ParkingDetails"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".BookingActivity"
+            android:parentActivityName=".ParkingDetails"/>
+        <activity android:name=".DetailsActivity"
+            android:parentActivityName=".BookingActivity"/>
+        <activity android:name=".PaymentActivity"
+            android:parentActivityName=".DetailsActivity"></activity>
     </application>
 
 </manifest>

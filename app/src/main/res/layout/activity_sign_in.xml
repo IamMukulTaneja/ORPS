@@ -23,6 +23,7 @@
         android:layout_marginTop="74dp"
         android:layout_weight="0.2"
         android:text="@string/enteryourdetails"
+        android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="40sp" />
 
@@ -60,6 +61,7 @@
         android:layout_marginTop="32dp"
         android:layout_weight="0.1"
         android:ems="10"
+        android:maxLength="10"
         android:layout_marginBottom="32dp"
         android:hint="@string/contact"
         android:inputType="phone" />
@@ -68,6 +70,10 @@
         android:id="@+id/signup"
         android:layout_width="220dp"
         android:layout_weight="0.1"
+        android:background="#00000000"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/signup" />

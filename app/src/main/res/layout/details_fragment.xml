@@ -27,8 +27,7 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="@string/namerequired"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/colorAccent" />
+            android:inputType="textPersonName"/>
 
         <EditText
             android:id="@+id/contact"
@@ -37,8 +36,7 @@
             android:layout_margin="8dp"
             android:ems="10"
             android:hint="@string/contactnumberrequired"
-            android:inputType="phone"
-            android:textColorHint="@color/colorAccent" />
+            android:inputType="phone" />
 
         <EditText
             android:id="@+id/email"
@@ -48,7 +46,7 @@
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/colorAccent" />
+             />
 
         <Button
             android:id="@+id/Next"
