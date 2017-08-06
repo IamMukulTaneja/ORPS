@@ -1,4 +1,5 @@
 <resources>
+    <string name="title_activity_main">MainActivity</string>
     <string name="app_name" translatable="false">ORPS</string>
     <string name="welcome_note">ORPS</string>
     <string name="welcome">Welcome to online railway parking system</string>
