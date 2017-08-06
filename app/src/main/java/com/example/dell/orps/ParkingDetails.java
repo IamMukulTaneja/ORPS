@@ -45,7 +45,7 @@ public class ParkingDetails extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                details.setText("NAhi HUA"+error);
+                details.setText("NAhi HUA  "+error);
             }
         });
         queue.add(json);
