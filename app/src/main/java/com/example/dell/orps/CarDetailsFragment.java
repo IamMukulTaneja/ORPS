@@ -26,9 +26,13 @@ import java.util.List;
 public class CarDetailsFragment extends Fragment {
     List<String> vehicletypelist;
     SpinnerAdapter adapter;
+    EditText vehiclenumber;
+    EditText vehiclecolor;
+    EditText vehiclename;
     Context context;
     Button  confirmandpay;
     Button previous;
+   public String vehiclenumberpost,vehicletypepost,vehiclenamepost,vehiclecolorpost;
     public CarDetailsFragment(){
     }
 
@@ -39,9 +43,9 @@ public class CarDetailsFragment extends Fragment {
         final DetailsFragment detailsFragment=new DetailsFragment();
         final FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
         Spinner vehicletype=(Spinner)rootview.findViewById(R.id.vehicletypespinner);
-        EditText vehiclenumber=(EditText)rootview.findViewById(R.id.vehiclenumber);
-        EditText vehiclecolor=(EditText)rootview.findViewById(R.id.vehiclecolor);
-        EditText vehiclename=(EditText)rootview.findViewById(R.id.vehiclename);
+         vehiclenumber=(EditText)rootview.findViewById(R.id.vehiclenumber);
+         vehiclecolor=(EditText)rootview.findViewById(R.id.vehiclecolor);
+         vehiclename=(EditText)rootview.findViewById(R.id.vehiclename);
         confirmandpay=(Button)rootview.findViewById(R.id.confirmandpay);
         previous=(Button)rootview.findViewById(R.id.previous);
         vehicletypelist=new ArrayList<String>();
@@ -49,10 +53,20 @@ public class CarDetailsFragment extends Fragment {
         vehicletypelist.add("Four Wheeler");
         adapter=new ArrayAdapter<String>(getContext(),R.layout.spinner_item,vehicletypelist);
         vehicletype.setAdapter(adapter);
+        vehiclenumberpost=vehiclenumber.getText().toString();
+        vehiclecolorpost=vehiclecolor.getText().toString();
+        vehiclenamepost=vehiclename.getText().toString();
         vehicletype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                if(adapterView.getItemAtPosition(i).toString()=="Two Wheeler")
+                {
+                    vehicletypepost="2w";
+                }
+                else
+                {
+                    vehicletypepost="4w";
+                }
             }
 
             @Override

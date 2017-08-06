@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -42,7 +43,6 @@ public class ParkingDetails extends AppCompatActivity {
     ListView station_details,two_wheeler,four_wheeler;
     Button book;
     String station_id,station_name,station_class,tot_2w_park,avail_2w_park,tot_4w_park,avail_4w_park;
-    String url = "http://192.168.1.103/OPRS-server-master/OPRS-server-master/getStationParkingStatus.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,8 +60,9 @@ public class ParkingDetails extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent i1=new Intent(ParkingDetails.this,BookingActivity.class);
-                startActivity(i1);
+          Intent i1=new Intent(ParkingDetails.this,DetailsActivity.class);
+                i1.putExtra("station",selectedstation);
+               startActivity(i1);
             }
         });
 
@@ -74,7 +75,7 @@ public class ParkingDetails extends AppCompatActivity {
     }
 
     public  void stringrequest(){
-        StringRequest json=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+        StringRequest json=new StringRequest(Request.Method.POST,getResources().getString(R.string.url)+"getStationParkingStatus.php", new Response.Listener<String>() {
             @Override
             public void onResponse(final String response) {
                 if (response != null) {
@@ -117,7 +118,7 @@ public class ParkingDetails extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                if (error instanceof TimeoutError) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                     Toast.makeText(ParkingDetails.this, "Noconnection"+error, Toast.LENGTH_SHORT).show();
                 } else if (error instanceof AuthFailureError) {
                     Toast.makeText(ParkingDetails.this, "Failureerror", Toast.LENGTH_SHORT).show();
@@ -133,7 +134,7 @@ public class ParkingDetails extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> map=new HashMap<>();
-                map.put("station_id",selectedstation);
+                map.put("stationid",selectedstation);
                 return map;
             }
         }

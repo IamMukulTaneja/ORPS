@@ -3,6 +3,7 @@ package com.example.dell.orps;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -57,5 +58,13 @@ TextView welcome;
 
             }
         });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.myFAB);
+fab.setOnClickListener(new View.OnClickListener() {@Override
+public void onClick(View view) {
+// Click action
+Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+startActivity(intent);
+}
+});
     }
 }

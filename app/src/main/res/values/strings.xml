@@ -43,4 +43,5 @@
     <string name="card">Credit/Debit Card</string>
     <string name="othermodes">Other Modes</string>
     <string name="previous">Previous</string>
+    <string name="url">http://cf8d4f85.ngrok.io/parking/</string>
 </resources>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,10 @@ import android.widget.EditText;
 
 public class DetailsFragment extends Fragment {
     public Button next;
+    EditText name;
+    EditText contact;
+    EditText email;
+    public String namepost,contactpost,emailpost;
     Context context;
     public DetailsFragment(){}
     @Nullable
@@ -26,9 +31,9 @@ public class DetailsFragment extends Fragment {
         final CarDetailsFragment carDetailsFragment=new CarDetailsFragment();
         final FragmentManager fragmentManager=getActivity().getSupportFragmentManager();
         View rootview=inflater.inflate(R.layout.details_fragment,container,false);
-        EditText name=(EditText)rootview.findViewById(R.id.name);
-        EditText contact=(EditText)rootview.findViewById(R.id.contact);
-        EditText email=(EditText)rootview.findViewById(R.id.email);
+        name=(EditText)rootview.findViewById(R.id.name);
+         contact=(EditText)rootview.findViewById(R.id.contact);
+         email=(EditText)rootview.findViewById(R.id.email);
         next=(Button)rootview.findViewById(R.id.Next);
         SharedPreferences sharedPreferences=getContext().getSharedPreferences("Mypref",0);
         String name1=sharedPreferences.getString("NAME",null);
@@ -37,12 +42,16 @@ public class DetailsFragment extends Fragment {
         contact.setText(contact1);
         String email1=sharedPreferences.getString("EMAIL",null);
         email.setText(email1);
+        namepost=name.getText().toString();
+        contactpost=contact.getText().toString();
+        emailpost=email.getText().toString();
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentManager.beginTransaction().replace(R.id.headcontainer,carDetailsFragment).commit();
             }
         });
+        Log.v("vansh","response    "+namepost);
         return rootview;
     }
 }
