@@ -7,6 +7,22 @@
     tools:context="com.example.dell.orps.MainActivity">
 
 
+
+    <include layout="@layout/content_main" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="wrap_content"
+        android:layout_height="183dp"
+        android:layout_weight="0.4"
+        app:srcCompat="@drawable/spalshimage" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/bookfab"
         android:layout_width="wrap_content"
@@ -19,15 +35,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1"
         tools:context="com.example.dell.orps.MainActivity">
-
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:context="com.example.dell.orps.MainActivity">
         <ImageView
             android:id="@+id/main_image"
             android:layout_width="wrap_content"
             android:layout_height="171dp"
+            app:srcCompat="@drawable/spalshimage"
+            android:layout_weight="0.28" />
             android:layout_weight="0.28"
             app:srcCompat="@drawable/spalshimage" />
         <TextView
@@ -46,6 +75,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_weight="0.1">
+
+            <TextView
+                android:id="@+id/enterstation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/stationspinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/stationspinner"
+                android:layout_marginLeft="16dp"
+                android:text="@string/enterstation"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/stationspinner"
+                android:layout_width="207dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/findparking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.1"
+            android:elevation="4dp"
+            android:text="@string/findparking" />
+    </LinearLayout>
 
             <TextView
                 android:id="@+id/enterstation"
