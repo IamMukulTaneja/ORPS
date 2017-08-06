@@ -1,3 +1,4 @@
+
 package com.example.dell.orps;
 
 import android.content.Intent;
@@ -117,6 +118,7 @@ public class ParkingDetails extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+
                 if (error instanceof TimeoutError) {
                     Toast.makeText(ParkingDetails.this, "Noconnection"+error, Toast.LENGTH_SHORT).show();
                 } else if (error instanceof AuthFailureError) {
@@ -128,6 +130,7 @@ public class ParkingDetails extends AppCompatActivity {
                 } else if (error instanceof ParseError) {
                     Toast.makeText(ParkingDetails.this, "ParseError", Toast.LENGTH_SHORT).show();
                 }
+
             }
         }){
             @Override
@@ -144,5 +147,5 @@ public class ParkingDetails extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         MySingleton.getInstance(this).addToRequestQueue(json);
     }
-
 }
+
