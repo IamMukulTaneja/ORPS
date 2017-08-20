@@ -26,12 +26,14 @@
             android:name=".ParkingDetails"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".DetailsActivity"
-            android:parentActivityName=".ParkingDetails" />
-        <activity
             android:name=".PaymentActivity"
-            android:parentActivityName=".DetailsActivity" />
-        <activity android:name=".RegistrationSlip"></activity>
+            android:parentActivityName=".VehicleDetails" />
+        <activity android:name=".RegistrationSlip" />
+        <activity android:name=".PersonalDetails" />
+        <activity
+            android:name=".VehicleDetails"
+            android:parentActivityName=".PersonalDetails" />
+        <activity android:name=".Recyclerviews" />
     </application>
 
 </manifest>

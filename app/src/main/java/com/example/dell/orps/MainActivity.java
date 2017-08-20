@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 TextView welcome;
-    Button findparking;
+    Button findparking,check;
     Spinner stationspinner;
     ArrayAdapter<String> adapter;
     List<String> stationlist;
@@ -63,10 +63,19 @@ TextView welcome;
 fab.setOnClickListener(new View.OnClickListener() {@Override
 public void onClick(View view) {
 // Click action
-Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+Intent intent = new Intent(MainActivity.this, PersonalDetails.class);
+    intent.putExtra("station",selectedstation);
 startActivity(intent);
 }
 });
+ check=(Button)findViewById(R.id.check);
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this,Recyclerviews.class);
+                startActivity(i);
+            }
+        });
     }
 
 }
