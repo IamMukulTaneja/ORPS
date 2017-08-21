@@ -7,22 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by Mukul on 08-08-2017.
  */
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ChecklistHolder> {
-    int numberlist;
-    public String mRegKey,mTime,mStatus,mCheckin,mCheckout;
-    public MyAdapter(String key,String time,String status,String checkin,String checkout){
-        mRegKey=key;
-        mTime=time;
-        mStatus=status;
-        mCheckin=checkin;
-        mCheckout=checkout;
-
-    }public MyAdapter(int mNumberList){
-      numberlist=mNumberList;
+List<DetailsFetcher> details;
+    public MyAdapter(){}
+   public MyAdapter(List<DetailsFetcher> list){
+      details=list;
     }
     @Override
     public ChecklistHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,18 +25,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ChecklistHolder> {
         LayoutInflater layoutInflater=LayoutInflater.from(context);
         View view=layoutInflater.inflate(R.layout.list_layout,parent,false);
         ChecklistHolder checklistHolder=new ChecklistHolder(view);
+
         return checklistHolder;
+
     }
     @Override
     public void onBindViewHolder(ChecklistHolder holder, int position) {
-        holder.reg_key.setText("res"+mRegKey);
+        DetailsFetcher detailsFetcher=details.get(position);
+        holder.reg_key.setText(detailsFetcher.getKey());
+        holder.status.setText(detailsFetcher.getCommit_Status());
+        holder.time.setText(detailsFetcher.getBook_time());
+        holder.car.setText("DL11SH7403");
+        holder.checkin.setText("Checkin");
+        holder.checkout.setText("Checkout");
+        holder.cancel.setText("Cancel");
     }
 
     @Override
     public int getItemCount() {
-        return numberlist;
+        return details.size();
     }
-    class ChecklistHolder extends RecyclerView.ViewHolder{
+    public class ChecklistHolder extends RecyclerView.ViewHolder{
     TextView reg_key,time,car,status,checkin,checkout,cancel;
     public ChecklistHolder(View itemView) {
         super(itemView);
@@ -52,10 +56,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ChecklistHolder> {
         checkin=(TextView)itemView.findViewById(R.id.checkin);
         checkout=(TextView)itemView.findViewById(R.id.checkout);
         cancel=(TextView)itemView.findViewById(R.id.canceltextview);
+
+
     }
+
 }
-
-
 
 
 

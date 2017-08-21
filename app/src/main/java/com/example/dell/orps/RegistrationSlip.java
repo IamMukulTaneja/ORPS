@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,8 +37,9 @@ public class RegistrationSlip extends AppCompatActivity {
 Bitmap bitmap;
     String vehnumber,vehname,vehcolor,vehtype;
     String name,email,contact,selectedstation;
-    TextView info;
+    TextView customer_nameTextView,veh_number_text_view,regNoTextView,book_timeTextView,slot_number_text_view,reciept,railwayparking,address,booking_charges;
     Button home;
+    ProgressBar mProgressBar;
     String  reg_no,slot_fpno,Book_time,commit_status;
    SharedPreference sharedPreference=new SharedPreference();
 
@@ -45,8 +47,17 @@ Bitmap bitmap;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_slip);
-        home=(Button)findViewById(R.id.button2);
-        info=(TextView)findViewById(R.id.info);
+        //home=(Button)findViewById(R.id.button2);
+        customer_nameTextView=(TextView)findViewById(R.id.customer_name);
+        regNoTextView=(TextView)findViewById(R.id.Reg_no);
+        veh_number_text_view=(TextView)findViewById(R.id.vehicle_number);
+        reciept=(TextView)findViewById(R.id.reciept);
+        address=(TextView)findViewById(R.id.address);
+        railwayparking=(TextView)findViewById(R.id.railway_parking);
+        booking_charges=(TextView)findViewById(R.id.booking_charges);
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar1);
+       book_timeTextView=(TextView)findViewById(R.id.book_Time);
+        slot_number_text_view=(TextView)findViewById(R.id.slot_number);
         sharedPreference.getContext(this);
         Intent y=getIntent();
         vehnumber=y.getStringExtra("vn");
@@ -57,18 +68,18 @@ Bitmap bitmap;
         email=y.getStringExtra("email");
         contact=y.getStringExtra("contact");
         selectedstation=y.getStringExtra("station");
-
+customer_nameTextView.setText("Customer Name :                    "+name);
+        veh_number_text_view.setText("Vehicle Number :                    "+vehnumber);
         stringrequest();
-        ImageView imageView = (ImageView) findViewById(R.id.qrCode);
-        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
-
+       ImageView imageView = (ImageView) findViewById(R.id.qrCode);
+       MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
 
             BitMatrix bitMatrix = multiFormatWriter.encode("key", BarcodeFormat.QR_CODE,600,600);
 
-            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+           BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
 
-            bitmap = barcodeEncoder.createBitmap(bitMatrix);
+           bitmap = barcodeEncoder.createBitmap(bitMatrix);
 
         } catch (WriterException e) {
 
@@ -76,13 +87,6 @@ Bitmap bitmap;
 
         }
         imageView.setImageBitmap(bitmap);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(RegistrationSlip.this,MainActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
 
@@ -101,7 +105,19 @@ public void stringrequest()
                     Book_time=jsonobject.getString("Book_time").toString();
                     commit_status=jsonobject.getString("commit_status").toString();
                     sharedPreference.getKey(reg_no);
-                    info.setText("res"+reg_no);
+                    slot_number_text_view.setText("Slot Number :                    "+slot_fpno);
+                    regNoTextView.setText("Registration Key :                    "+reg_no);
+                    book_timeTextView.setText("Book Time :                    "+Book_time);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    railwayparking.setVisibility(View.VISIBLE);
+                    address.setVisibility(View.VISIBLE);
+                    reciept.setVisibility(View.VISIBLE);
+                    customer_nameTextView.setVisibility(View.VISIBLE);
+                    book_timeTextView.setVisibility(View.VISIBLE);
+                    regNoTextView.setVisibility(View.VISIBLE);
+                    veh_number_text_view.setVisibility(View.VISIBLE);
+                    booking_charges.setVisibility(View.VISIBLE);
+                    slot_number_text_view.setVisibility(View.VISIBLE);
                 } catch (JSONException e) {
                     if(e!=null){
                         e.printStackTrace();

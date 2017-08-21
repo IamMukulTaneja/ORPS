@@ -18,8 +18,7 @@
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="50dp"
-        android:layout_marginBottom="77dp"
-        android:layout_above="@+id/textView2"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -31,29 +30,28 @@
         android:textSize="25sp"
         android:textColor="#212121"
         android:textStyle="bold"
-        android:layout_marginBottom="61dp"
-        android:layout_above="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/welcome_note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="34dp"
         android:text="@string/splashtext"
         android:textSize="18sp"
         android:textColor="#212121"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/parking"
-        android:layout_marginBottom="82dp"
-        android:layout_above="@+id/welcome_note"
-        android:layout_centerHorizontal="true" />
+        app:srcCompat="@drawable/car"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp" />
 
 </RelativeLayout>

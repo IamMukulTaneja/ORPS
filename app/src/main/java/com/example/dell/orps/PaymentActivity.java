@@ -45,5 +45,50 @@ TextView paytm,railway,card,other;
                 startActivity(intent);
             }
         });
+        railway.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PaymentActivity.this,RegistrationSlip.class);
+                intent.putExtra("vn",vn);
+                intent.putExtra("vc",vc);
+                intent.putExtra("vname",vname);
+                intent.putExtra("vtype",vtype);
+                intent.putExtra("name",name);
+                intent.putExtra("email",email);
+                intent.putExtra("contact",contact);
+                intent.putExtra("station",selectedstation);
+                startActivity(intent);
+            }
+        });
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PaymentActivity.this,RegistrationSlip.class);
+                intent.putExtra("vn",vn);
+                intent.putExtra("vc",vc);
+                intent.putExtra("vname",vname);
+                intent.putExtra("vtype",vtype);
+                intent.putExtra("name",name);
+                intent.putExtra("email",email);
+                intent.putExtra("contact",contact);
+                intent.putExtra("station",selectedstation);
+                startActivity(intent);
+            }
+        });
+        other.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PaymentActivity.this,RegistrationSlip.class);
+                intent.putExtra("vn",vn);
+                intent.putExtra("vc",vc);
+                intent.putExtra("vname",vname);
+                intent.putExtra("vtype",vtype);
+                intent.putExtra("name",name);
+                intent.putExtra("email",email);
+                intent.putExtra("contact",contact);
+                intent.putExtra("station",selectedstation);
+                startActivity(intent);
+            }
+        });
     }
 }

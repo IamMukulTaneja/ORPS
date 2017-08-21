@@ -21,21 +21,30 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Recyclerviews extends AppCompatActivity {
-    private int Number_List=1;
+    private List<DetailsFetcher> details = new ArrayList<>();
     MyAdapter adapter;
-    int count;
+    int count,i=1;
     RecyclerView checkList;
-    public String slot_fpno,Book_time,commit_status,checkin,checkout,key,key1;
+    public String slot_fpno,Book_time,commit_status,checkin,checkout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerviews);
-        final SharedPreferences sharedPreferences=getSharedPreferences("Keys",0);
-        count=sharedPreferences.getAll().size();
+        final SharedPreferences sharedPreferences = getSharedPreferences("Keys", 0);
+        count = sharedPreferences.getAll().size();
+        checkList = (RecyclerView) findViewById(R.id.checklist);
+
+        LinearLayoutManager mlayoutmanager = new LinearLayoutManager(this);
+        checkList.setLayoutManager(mlayoutmanager);
+        checkList.setHasFixedSize(true);
+        adapter = new MyAdapter(details);
+        checkList.setAdapter(adapter);
             StringRequest json1 = new StringRequest(Request.Method.POST, getResources().getString(R.string.url) + "checkBooking.php", new Response.Listener<String>() {
                 @Override
                 public void onResponse(final String response) {
@@ -49,7 +58,9 @@ public class Recyclerviews extends AppCompatActivity {
                             commit_status = jsonobject.getString("commit_status").toString();
                             checkin = jsonobject.getString("chkin_time").toString();
                             checkout = jsonobject.getString("chkout_time").toString();
-                            MyAdapter myAdapter = new MyAdapter(sharedPreferences.getString("ORPS1", null), Book_time, commit_status, checkin, checkout);
+                            DetailsFetcher detailsFetcher = new DetailsFetcher(sharedPreferences.getString("ORPS1", null), slot_fpno, Book_time, commit_status, checkin, checkout);
+                            details.add(detailsFetcher);
+                            adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             if (e != null) {
                                 e.printStackTrace();
@@ -89,13 +100,7 @@ public class Recyclerviews extends AppCompatActivity {
             MySingleton.getInstance(this).addToRequestQueue(json1);
 
 
-            checkList = (RecyclerView) findViewById(R.id.checklist);
 
-            LinearLayoutManager mlayoutmanager = new LinearLayoutManager(this);
-            checkList.setLayoutManager(mlayoutmanager);
-            checkList.setHasFixedSize(true);
-            adapter = new MyAdapter(Number_List);
-            checkList.setAdapter(adapter);
-        }
+    }
     }
 

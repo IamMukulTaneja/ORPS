@@ -13,27 +13,26 @@
         android:id="@+id/welcome1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/welcome"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
         android:text="@string/welcome1"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="45sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_margin="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="45sp"
-        android:layout_marginBottom="84dp"
-        android:layout_above="@+id/relativeLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/welcome1"
+        android:layout_alignBottom="@+id/welcome1"
+        android:layout_toRightOf="@+id/welcome1"
+        android:layout_toEndOf="@+id/welcome1" />
 
 
         <LinearLayout
@@ -41,12 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:orientation="horizontal"
-            android:layout_marginBottom="68dp"
             android:id="@+id/relativeLayout"
             android:weightSum="1"
-            android:layout_above="@+id/findparking"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/welcome1"
+            android:layout_alignStart="@+id/welcome1">
 
             <TextView
                 android:id="@+id/enterstation"
@@ -63,66 +61,80 @@
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/stationspinner"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-
-                android:layout_alignParentTop="true"
-
-                android:layout_gravity="right"
-                android:layout_marginLeft="22dp"
-                android:layout_marginStart="22dp"
-                android:layout_toEndOf="@+id/enterstation"
-                android:layout_toRightOf="@+id/enterstation"
-                android:textAlignment="center" />
-
         </LinearLayout>
         <Button
             android:id="@+id/findparking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_weight="0.1"
-            android:elevation="4dp"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:background="#00000000"
+            android:elevation="4dp"
+            android:background="@drawable/button_shape"
             android:text="@string/findparking"
-            android:layout_marginBottom="73dp"
-            android:textColor="@color/colorPrimary"
-            android:layout_alignParentBottom="true"
+            android:shadowColor="#A8A8A8"
+            android:textColor="#FFFFFF"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:layout_marginTop="54dp"
+            android:layout_below="@+id/stationspinner"
             android:layout_centerHorizontal="true" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/myFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_weight="0.01"
         android:background="@color/colorAccent"
-        android:foregroundGravity="right"
         android:src="@drawable/fab_add"
         app:elevation="4dp"
         app:fabSize="auto"
-        android:layout_marginRight="17dp"
-        android:layout_marginBottom="26dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/findparking"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="17dp"></android.support.design.widget.FloatingActionButton>
+        android:layout_marginRight="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="56dp">
+
+    </android.support.design.widget.FloatingActionButton>
 
     <Button
         android:id="@+id/check"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:elevation="4dp"
+        android:textSize="20sp"
+        android:shadowColor="#A8A8A8"
+        android:textColor="#FFFFFF"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:background="@drawable/button_shape"
+        android:text="Current Booking"
+        android:layout_alignTop="@+id/myFAB"
+        android:layout_alignLeft="@+id/relativeLayout"
+        android:layout_alignStart="@+id/relativeLayout"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimary"
-        android:background="#00000000"
-        android:text="Your Bookings"
-        android:layout_alignTop="@+id/myFAB"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        app:srcCompat="@drawable/car"
+        android:layout_below="@+id/welcome1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
+
+    <Spinner
+        android:id="@+id/stationspinner"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/relativeLayout"
+        android:layout_gravity="right"
+        android:textAlignment="center" />
 
 </RelativeLayout>

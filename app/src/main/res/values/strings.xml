@@ -14,7 +14,7 @@
     <string name="contact">Contact Number</string>
     <string name="email">Email</string>
     <string name="signup" translatable="false">Sign Up</string>
-    <string name="welcome1">Welcome </string>
+    <string name="welcome1">Welcome, </string>
     <string name="ghy">GHY</string>
     <string name="stationdetail">STATION DETAILS</string>
     <string name="twowheelerparkingdetails">TWO WHEELER</string>
@@ -43,6 +43,6 @@
     <string name="card">Credit/Debit Card</string>
     <string name="othermodes">Other Modes</string>
     <string name="previous">Previous</string>
-    <string name="url">http://558d42a1.ngrok.io/parking/</string>
+    <string name="url">http://dd3e01b0.ngrok.io/parking/</string>
     <string name="home">Back to Home</string>
 </resources>

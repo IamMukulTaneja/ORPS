@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,13 +35,13 @@ import java.util.Map;
 
 public class ParkingDetails extends AppCompatActivity {
     private static final int MY_SOCKET_TIMEOUT_MS =5000 ;
-    String TAG="NetworkUtils";
-    String res;
     ArrayAdapter<String> stationadapter;
     ArrayAdapter TwoWheeleradapter;
+    ProgressBar mProgressBar;
     ArrayAdapter FourWheeleradapter;
     List<String> stationdetails,twowheelerlist,fourwheelerlist;
     String selectedstation;
+    TextView stationDetails,twoWheeler,fourWheeler;
     ListView station_details,two_wheeler,four_wheeler;
     Button book;
     String station_id,station_name,station_class,tot_2w_park,avail_2w_park,tot_4w_park,avail_4w_park;
@@ -48,6 +50,10 @@ public class ParkingDetails extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parking_details);
+        mProgressBar=(ProgressBar)findViewById(R.id.progressBar);
+        twoWheeler=(TextView)findViewById(R.id.twoWheeler);
+        fourWheeler=(TextView)findViewById(R.id.fourWheeler);
+        stationDetails=(TextView)findViewById(R.id.stationDetails);
         Intent get = getIntent();
         station_details = (ListView) findViewById(R.id.stationdetails);
         book = (Button) findViewById(R.id.book);
@@ -105,6 +111,15 @@ public class ParkingDetails extends AppCompatActivity {
                         two_wheeler.setAdapter(TwoWheeleradapter);
                         FourWheeleradapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.parkingdetailslayout, fourwheelerlist);
                         four_wheeler.setAdapter(FourWheeleradapter);
+                        mProgressBar.setVisibility(View.INVISIBLE);
+                        station_details.setVisibility(View.VISIBLE);
+                        two_wheeler.setVisibility(View.VISIBLE);
+                        four_wheeler.setVisibility(View.VISIBLE);
+                        book.setVisibility(View.VISIBLE);
+                        twoWheeler.setVisibility(View.VISIBLE);
+                        fourWheeler.setVisibility(View.VISIBLE);
+                        stationDetails.setVisibility(View.VISIBLE);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

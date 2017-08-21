@@ -6,7 +6,7 @@
     android:textAppearance="?android:attr/textAppearanceListItemSmall"
     android:gravity="center_vertical"
     android:textSize="17sp"
-    android:textColor="#4CAF50"
+    android:textColor="@color/colorAccent"
     android:textStyle="bold"
     android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
