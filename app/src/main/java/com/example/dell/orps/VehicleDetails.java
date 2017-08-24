@@ -2,6 +2,7 @@ package com.example.dell.orps;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -73,16 +74,25 @@ Intent i=getIntent();
                 vehiclenumberpost=vehiclenumber.getText().toString();
                 vehiclecolorpost=vehiclecolor.getText().toString();
                 vehiclenamepost=vehiclename.getText().toString();
-                Intent i10=new Intent(VehicleDetails.this,PaymentActivity.class);
-                i10.putExtra("vehiclenumber",vehiclenumberpost);
-                i10.putExtra("vehiclecolor",vehiclecolorpost);
-                i10.putExtra("vehiclename",vehiclenamepost);
-                i10.putExtra("vehicletype",vehicletypepost);
-                i10.putExtra("name",name1);
-                i10.putExtra("email",email);
-                i10.putExtra("contact",contact1);
-                i10.putExtra("station",selectedstation);
-                startActivity(i10);
+                SharedPreferences sharedPreference=getSharedPreferences("Mypref",0);
+                SharedPreferences.Editor editor=sharedPreference.edit();
+                editor.putString("vehicleNumber",vehiclenumberpost);
+                editor.putString("vehicleColor",vehiclecolorpost);
+                editor.putString("vehicleName",vehiclenamepost);
+                editor.apply();
+                Bundle bundle=new Bundle();
+                bundle.putString("vehnumber",vehiclenumberpost);
+                bundle.putString("vehcolor",vehiclecolorpost);
+                bundle.putString("vehname",vehiclenamepost);
+                bundle.putString("vehtype",vehicletypepost);
+                bundle.putString("name",name1);
+                bundle.putString("email",email);
+                bundle.putString("contact",contact1);
+                bundle.putString("station",selectedstation);
+                BookingDialogueFragment bookingDialogueFragment=new BookingDialogueFragment();
+                bookingDialogueFragment.setArguments(bundle);
+                bookingDialogueFragment.show(getSupportFragmentManager(), "NoticeDialogFragment");
+
             }
         });
         previous.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +103,11 @@ Intent i=getIntent();
                 startActivity(intent);
             }
         });
+
+        SharedPreferences sharedPreferences1=getSharedPreferences("Mypref",0);
+        vehiclenumber.setText(sharedPreferences1.getString("vehicleNumber",null));
+        vehiclecolor.setText(sharedPreferences1.getString("vehicleColor",null));
+        vehiclename.setText(sharedPreferences1.getString("vehicleName",null));
 
     }
 }

@@ -34,7 +34,7 @@ public class PersonalDetails extends AppCompatActivity {
         contact.setText(contact1);
         String email1=sharedPreferences.getString("EMAIL",null);
         email.setText(email1);
-Intent i1=getIntent();
+        Intent i1=getIntent();
         selectedstation=i1.getStringExtra("station");
         next.setOnClickListener(new View.OnClickListener() {
             @Override

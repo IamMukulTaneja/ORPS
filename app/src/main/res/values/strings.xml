@@ -43,6 +43,9 @@
     <string name="card">Credit/Debit Card</string>
     <string name="othermodes">Other Modes</string>
     <string name="previous">Previous</string>
-    <string name="url">http://dd3e01b0.ngrok.io/parking/</string>
+    <string name="url">http://af8fcec5.ngrok.io/parking/</string>
     <string name="home">Back to Home</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

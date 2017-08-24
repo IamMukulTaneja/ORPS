@@ -28,13 +28,20 @@
         <activity
             android:name=".PaymentActivity"
             android:parentActivityName=".VehicleDetails" />
-        <activity android:name=".RegistrationSlip"
-            android:largeHeap="true"/>
+        <activity
+            android:name=".RegistrationSlip"
+            android:largeHeap="true"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".PersonalDetails" />
         <activity
             android:name=".VehicleDetails"
             android:parentActivityName=".PersonalDetails" />
         <activity android:name=".Recyclerviews" />
+        <activity android:name=".Checkin" />
+        <activity android:name=".Checkout" />
+        <activity android:name=".Cancel" />
+        <activity android:name=".RecieptShower" />
+        <activity android:name=".CurrentBooking"></activity>
     </application>
 
 </manifest>

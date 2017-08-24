@@ -34,14 +34,36 @@ TextView welcome;
         String name=sharedPreferences.getString("NAME",null);
         welcome.append(name);
         stationlist=new ArrayList<String>();
-        stationlist.add("ghy");
-        stationlist.add("ndls");
+        stationlist.add("Guwahati");
+        stationlist.add("New Delhi");
+        stationlist.add("Howrah");
+        stationlist.add("Chhatrapati Shivaji");
+        stationlist.add("Chennai Central");
         adapter=new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item,stationlist);
         stationspinner.setAdapter(adapter);
         stationspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-              selectedstation=adapterView.getItemAtPosition(i).toString();
+                if(adapterView.getItemAtPosition(i).toString() == "Guwahati")
+                {
+                    selectedstation="ghy";
+                }
+                else if(adapterView.getItemAtPosition(i).toString() == "New Delhi")
+                {
+                    selectedstation="ndls";
+                }
+                else if(adapterView.getItemAtPosition(i).toString() == "Howrah")
+                {
+                    selectedstation="hwh";
+                }
+                else if(adapterView.getItemAtPosition(i).toString() == "Chhatrapati Shivaji")
+                {
+                    selectedstation="cstm";
+                }
+                else if(adapterView.getItemAtPosition(i).toString() == "Chennai Central")
+                {
+                    selectedstation="mas";
+                }
             }
 
             @Override
@@ -72,7 +94,7 @@ startActivity(intent);
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(MainActivity.this,Recyclerviews.class);
+                Intent i=new Intent(MainActivity.this,CurrentBooking.class);
                 startActivity(i);
             }
         });

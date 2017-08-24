@@ -44,6 +44,7 @@ public class ParkingDetails extends AppCompatActivity {
     TextView stationDetails,twoWheeler,fourWheeler;
     ListView station_details,two_wheeler,four_wheeler;
     Button book;
+    TextView empty;
     String station_id,station_name,station_class,tot_2w_park,avail_2w_park,tot_4w_park,avail_4w_park;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class ParkingDetails extends AppCompatActivity {
         mProgressBar=(ProgressBar)findViewById(R.id.progressBar);
         twoWheeler=(TextView)findViewById(R.id.twoWheeler);
         fourWheeler=(TextView)findViewById(R.id.fourWheeler);
+        empty=(TextView)findViewById(R.id.empty);
         stationDetails=(TextView)findViewById(R.id.stationDetails);
         Intent get = getIntent();
         station_details = (ListView) findViewById(R.id.stationdetails);
@@ -66,9 +68,10 @@ public class ParkingDetails extends AppCompatActivity {
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-          Intent i1=new Intent(ParkingDetails.this,PersonalDetails.class);
+                Intent i1=new Intent(ParkingDetails.this,PersonalDetails.class);
                 i1.putExtra("station",selectedstation);
-               startActivity(i1);
+                startActivity(i1);
+
             }
         });
 
@@ -134,15 +137,37 @@ public class ParkingDetails extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                    Toast.makeText(ParkingDetails.this, "Noconnection"+error, Toast.LENGTH_SHORT).show();
+                    station_details.setEmptyView(empty);
+                    two_wheeler.setEmptyView(empty);
+                    four_wheeler.setEmptyView(empty);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    empty.setText("PLEASE CHECK YOUR INTERNET CONNECTION AND TRY AGAIN !");
                 } else if (error instanceof AuthFailureError) {
-                    Toast.makeText(ParkingDetails.this, "Failureerror", Toast.LENGTH_SHORT).show();
+                    station_details.setEmptyView(empty);
+                    two_wheeler.setEmptyView(empty);
+                    four_wheeler.setEmptyView(empty);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    empty.setText("ERROR FROM OUR SIDE, WE ARE WORKING ON IT,PLEASE TRY AGAIN LATER !");
                 } else if (error instanceof ServerError) {
-                    Toast.makeText(ParkingDetails.this, "Server error", Toast.LENGTH_SHORT).show();
+                    station_details.setEmptyView(empty);
+                    two_wheeler.setEmptyView(empty);
+                    four_wheeler.setEmptyView(empty);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    empty.setText("ERROR FROM OUR SIDE, WE ARE WORKING ON IT,PLEASE TRY AGAIN LATER !");
                 } else if (error instanceof NetworkError) {
-                    Toast.makeText(ParkingDetails.this, "NetworkError", Toast.LENGTH_SHORT).show();
+                    station_details.setEmptyView(empty);
+                    two_wheeler.setEmptyView(empty);
+                    four_wheeler.setEmptyView(empty);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    empty.setText("ERROR FROM OUR SIDE, WE ARE WORKING ON IT,PLEASE TRY AGAIN LATER !");
+
                 } else if (error instanceof ParseError) {
-                    Toast.makeText(ParkingDetails.this, "ParseError", Toast.LENGTH_SHORT).show();
+                    station_details.setEmptyView(empty);
+                    two_wheeler.setEmptyView(empty);
+                    four_wheeler.setEmptyView(empty);
+                    mProgressBar.setVisibility(View.INVISIBLE);
+                    empty.setText("ERROR FROM OUR SIDE, WE ARE WORKING ON IT,PLEASE TRY AGAIN LATER !");
+
                 }
             }
         }){
