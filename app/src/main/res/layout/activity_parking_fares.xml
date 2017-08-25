@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dell.orps.ParkingFares">
+
+    <TextView
+        android:id="@+id/parkingFares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parking Fares"
+        android:textSize="26sp"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="42dp"
+        android:layout_marginTop="46dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+<RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="17dp"
+    android:weightSum="4"
+    android:layout_below="@+id/parkingFares"
+    android:layout_centerHorizontal="true">
+    <RadioButton
+        android:id="@+id/thirty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_below="@+id/parkingFares"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="INR 30 : 15 Minutes Reserve and 1 Hour Booking" />
+
+    <RadioButton
+        android:id="@+id/seventy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_below="@+id/radioButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:text="INR 70 : 30 minutes Reserve and 2 hour Booking" />
+
+    <RadioButton
+        android:id="@+id/hundred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_alignLeft="@+id/radioButton2"
+        android:layout_alignStart="@+id/radioButton2"
+        android:layout_below="@+id/radioButton2"
+        android:layout_marginTop="31dp"
+        android:text="INR 100 : 45 minutes Reserve and 3 hour Booking" />
+
+    <RadioButton
+        android:id="@+id/twoHundred"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton3"
+        android:layout_alignStart="@+id/radioButton3"
+        android:layout_below="@+id/radioButton3"
+        android:layout_marginTop="45dp"
+        android:text="INR 200 : 1.5 hour Reserve and 6 hoour booking" />
+</RadioGroup>
+    <Button
+        android:id="@+id/proceed"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_shape"
+        android:text="Proceed"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp" />
+</RelativeLayout>

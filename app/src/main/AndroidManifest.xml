@@ -41,7 +41,8 @@
         <activity android:name=".Checkout" />
         <activity android:name=".Cancel" />
         <activity android:name=".RecieptShower" />
-        <activity android:name=".CurrentBooking"></activity>
+        <activity android:name=".CurrentBooking" />
+        <activity android:name=".ParkingFares"></activity>
     </application>
 
 </manifest>
