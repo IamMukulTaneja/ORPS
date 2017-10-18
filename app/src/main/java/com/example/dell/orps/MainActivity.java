@@ -99,5 +99,8 @@ startActivity(intent);
             }
         });
     }
-
+public String getStation()
+{
+    return selectedstation;
+}
 }

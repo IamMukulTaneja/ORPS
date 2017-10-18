@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -68,13 +69,13 @@ public class RegistrationSlip extends AppCompatActivity {
         sharedPreference.getContext(this);
         Intent y = getIntent();
         vehnumber = y.getStringExtra("vn");
+
         vehname = y.getStringExtra("vname");
         vehcolor = y.getStringExtra("vc");
         vehtype = y.getStringExtra("vtype");
         name = y.getStringExtra("name");
         email = y.getStringExtra("email");
         contact = y.getStringExtra("contact");
-        selectedstation = y.getStringExtra("station");
         customer_nameTextView.setText(name);
         veh_number_text_view.setText(vehnumber);
 cancel_button.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +182,7 @@ public void stringrequest()
         @Override
         protected Map<String, String> getParams() throws AuthFailureError {
             Map<String,String> map=new HashMap<>();
+            Log.v("Vansh","res"+vehnumber+vehcolor+vehtype+name+email+contact+vehname+selectedstation);
             map.put("custname",name);
             map.put("custnum",contact);
             map.put("custemail",email);
@@ -188,7 +190,7 @@ public void stringrequest()
             map.put("vehicletype",vehtype);
             map.put("vehiclename",vehname);
             map.put("vehiclecolor",vehcolor);
-            map.put("stationid",selectedstation);
+            map.put("stationid","ghy");
             return map;
         }
     }
